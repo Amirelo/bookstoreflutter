@@ -1,4 +1,4 @@
-import 'package:bookstore/src/screens/auth/SignInScreen.dart';
+import 'package:bookstore/src/screens/auth/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashSCreen extends StatelessWidget {

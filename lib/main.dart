@@ -1,4 +1,4 @@
-import 'package:bookstore/src/screens/auth/SplashScreen.dart';
+import 'package:bookstore/src/screens/auth/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,7 +10,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: SafeArea(child: SplashSCreen()),
     );
   }

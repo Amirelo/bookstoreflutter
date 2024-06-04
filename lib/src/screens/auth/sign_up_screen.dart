@@ -1,4 +1,3 @@
-import 'package:bookstore/src/screens/auth/SignInScreen.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {

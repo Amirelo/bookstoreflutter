@@ -1,5 +1,5 @@
-import 'package:bookstore/src/screens/auth/SignUpScreen.dart';
-import 'package:bookstore/src/screens/home/MainScreen.dart';
+import 'package:bookstore/src/screens/auth/sign_up_screen.dart';
+import 'package:bookstore/src/screens/home/main_screen.dart';
 import 'package:flutter/material.dart';
 
 class SignInScreen extends StatelessWidget {
