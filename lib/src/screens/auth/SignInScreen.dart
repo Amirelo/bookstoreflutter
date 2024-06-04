@@ -1,4 +1,5 @@
 import 'package:bookstore/src/screens/auth/SignUpScreen.dart';
+import 'package:bookstore/src/screens/home/MainScreen.dart';
 import 'package:flutter/material.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -9,6 +10,11 @@ class SignInScreen extends StatelessWidget {
     onSignUpPress() {
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => const SignUpScreen()));
+    }
+
+    onSignInPress() {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const MainScreen()));
     }
 
     return Scaffold(
@@ -23,7 +29,7 @@ class SignInScreen extends StatelessWidget {
           const TextField(
             decoration: InputDecoration(hintText: "Password"),
           ),
-          TextButton(onPressed: () {}, child: const Text("Sign In")),
+          TextButton(onPressed: onSignInPress, child: const Text("Sign In")),
           const Text("Or sign in with"),
           Row(
             children: [
