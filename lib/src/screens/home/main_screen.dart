@@ -1,3 +1,4 @@
+import 'package:bookstore/src/screens/home/EBookScreen.dart';
 import 'package:bookstore/src/screens/home/account_screen.dart';
 import 'package:bookstore/src/screens/home/cart_screen.dart';
 import 'package:bookstore/src/screens/home/explore_screen.dart';
@@ -25,6 +26,7 @@ class _MainScreenState extends State<MainScreen> {
     const List<Widget> screens = [
       HomeScreen(),
       ExploreScreen(),
+      EBookScreen(),
       CartScreen(),
       AccountScreen()
     ];
@@ -41,6 +43,7 @@ class _MainScreenState extends State<MainScreen> {
               label: "Home",
               backgroundColor: Colors.green),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
+          BottomNavigationBarItem(icon: Icon(Icons.book), label: "E-Book"),
           BottomNavigationBarItem(
               icon: Icon(Icons.shopping_cart), label: "History"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Account")
