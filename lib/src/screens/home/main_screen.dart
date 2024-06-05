@@ -35,13 +35,13 @@ class _MainScreenState extends State<MainScreen> {
       body: SafeArea(child: screens.elementAt(selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: selectedIndex,
+        type: BottomNavigationBarType.fixed,
         onTap: onItemTapped,
         backgroundColor: Colors.green,
+        selectedItemColor: Colors.white,
+        showUnselectedLabels: false,
         items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: "Home",
-              backgroundColor: Colors.green),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
           BottomNavigationBarItem(icon: Icon(Icons.book), label: "E-Book"),
           BottomNavigationBarItem(
