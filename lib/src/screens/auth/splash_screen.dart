@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bookstore/src/screens/auth/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -6,26 +8,36 @@ class SplashSCreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    onContinuePressed() {
-      Navigator.push(context,
+    Timer(const Duration(seconds: 2), () {
+      Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (context) => const SignInScreen()));
-    }
+    });
 
     return (Scaffold(
       body: Container(
+        width: const BoxConstraints().maxWidth,
         decoration: const BoxDecoration(
             gradient: LinearGradient(
                 colors: [Colors.green, Colors.blue],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft)),
-        child: Column(
+        child: const Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.network(
-                "https://images.pexels.com/photos/762687/pexels-photo-762687.jpeg"),
-            const Text("Title"),
-            const Text("Description"),
-            TextButton(
-                onPressed: onContinuePressed, child: const Text("Continue")),
+            Text(
+              "Book Haven",
+              style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+            Text(
+              "Today a reader, tomorrow a leader.",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  fontSize: 20),
+            ),
           ],
         ),
       ),
