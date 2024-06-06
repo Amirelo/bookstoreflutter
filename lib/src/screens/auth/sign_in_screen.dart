@@ -1,5 +1,6 @@
 import 'package:bookstore/src/screens/auth/sign_up_screen.dart';
 import 'package:bookstore/src/screens/home/main_screen.dart';
+import 'package:bookstore/src/widgets/custom_input.dart';
 import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,10 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   bool showPassword = false;
+
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     void onSignUpPress() {
@@ -34,39 +39,69 @@ class _SignInScreenState extends State<SignInScreen> {
         body: SafeArea(
       child: Container(
         width: const BoxConstraints().maxWidth,
-        padding: const EdgeInsets.only(left: 16, right: 16),
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 40),
         child: Column(
           children: [
             const CustomText(
               title: "Sign In",
-              paddingTop: 40,
+              paddingBottom: 8,
               fontPreset: FontPresets.header,
             ),
             const CustomText(
               title: "Welcome to book store",
-              paddingTop: 12,
+              paddingBottom: 20,
               fontPreset: FontPresets.subTitle,
             ),
-            const TextField(
-              decoration: InputDecoration(labelText: "Username"),
+            CustomInput(
+              hint: "Username",
+              controller: usernameController,
+              paddingBottom: 12,
             ),
-            TextField(
-              decoration: InputDecoration(
-                  labelText: "Password",
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                        showPassword ? Icons.visibility_off : Icons.visibility),
-                    onPressed: onVisibilityPress,
-                  )),
-              obscureText: showPassword,
+            CustomInput(
+              hint: "Password",
+              controller: passwordController,
+              paddingBottom: 20,
+              hasObscure: true,
             ),
-            TextButton(onPressed: onSignInPress, child: const Text("Sign In")),
+            SizedBox(
+              width: BoxConstraints().maxWidth,
+              height: 48,
+              child: ElevatedButton(
+                onPressed: onSignInPress,
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8))),
+                child: const Text("Sign In"),
+              ),
+            ),
             const Text("Or sign in with"),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                TextButton(onPressed: () {}, child: const Text("Google")),
-                TextButton(onPressed: () {}, child: const Text("Facebook")),
-                TextButton(onPressed: () {}, child: const Text("Apple")),
+                ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: Size.fromWidth(
+                            const BoxConstraints().maxWidth * 0.3),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8))),
+                    child: const Text("Google")),
+                ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: Size.fromWidth(
+                            const BoxConstraints().maxWidth * 0.3),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8))),
+                    child: const Text("Facebook")),
+                ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("Apple"),
+                    style: ElevatedButton.styleFrom(
+                        fixedSize:
+                            Size.fromWidth(BoxConstraints().maxWidth * 0.3),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8)))),
               ],
             ),
             TextButton(
