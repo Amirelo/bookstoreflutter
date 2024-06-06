@@ -50,12 +50,14 @@ class _CustomInputState extends State<CustomInput> {
           controller: widget.controller,
           obscureText: showText,
           decoration: InputDecoration(
+            contentPadding: const EdgeInsets.only(bottom: -10),
             labelText: widget.hint,
             suffixIcon: widget.hasObscure
                 ? IconButton(
                     onPressed: onIconPress,
                     icon: Icon(
-                        showText ? Icons.visibility_off : Icons.visibility))
+                        showText ? Icons.visibility_off : Icons.visibility),
+                  )
                 : TextButton(
                     onPressed: onClearPress,
                     style: TextButton.styleFrom(

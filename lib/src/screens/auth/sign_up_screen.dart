@@ -1,3 +1,6 @@
+import 'package:bookstore/src/widgets/custom_button.dart';
+import 'package:bookstore/src/widgets/custom_input.dart';
+import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -26,51 +29,46 @@ class _SignUpScreenState extends State<SignUpScreen> {
     } else {
       isEmailValid = false;
     }
-    print("Email validation status: $isEmailValid");
   }
 
   @override
   Widget build(BuildContext context) {
     return (Scaffold(
+        appBar: AppBar(
+          title: const CustomText(
+            title: "Sign Up",
+            fontPreset: FontPresets.header,
+          ),
+        ),
         body: SafeArea(
-      child: Column(children: [
-        const Text("Sign Up"),
-        const Text("Create new account"),
-        TextField(
-          decoration: const InputDecoration(hintText: "Email"),
-          controller: emailController,
-        ),
-        TextField(
-          decoration: const InputDecoration(hintText: "Password"),
-          controller: passwordController,
-        ),
-        TextField(
-          decoration: const InputDecoration(hintText: "Confirm Password"),
-          controller: confPasswordController,
-        ),
-        const ColoredBox(
-          color: Colors.greenAccent,
-          child: SizedBox(
-            width: 20,
-            height: 14,
+          child: Container(
+            width: const BoxConstraints().maxWidth,
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            child: Column(children: [
+              const CustomText(
+                title: "Create new account",
+                paddingBottom: 20,
+              ),
+              CustomInput(
+                hint: "Email",
+                controller: emailController,
+                paddingBottom: 12,
+              ),
+              CustomInput(
+                hint: "Password",
+                controller: passwordController,
+                hasObscure: true,
+                paddingBottom: 12,
+              ),
+              CustomInput(
+                hint: "Confirm Password",
+                controller: confPasswordController,
+                hasObscure: true,
+                paddingBottom: 20,
+              ),
+              CustomButton(onPress: onSignUpPress, title: "Sign Up")
+            ]),
           ),
-        ),
-        const ColoredBox(
-          color: Colors.greenAccent,
-          child: SizedBox(
-            width: 20,
-            height: 14,
-          ),
-        ),
-        const ColoredBox(
-          color: Colors.greenAccent,
-          child: SizedBox(
-            width: 20,
-            height: 14,
-          ),
-        ),
-        TextButton(onPressed: onSignUpPress, child: const Text("Sign Up"))
-      ]),
-    )));
+        )));
   }
 }
