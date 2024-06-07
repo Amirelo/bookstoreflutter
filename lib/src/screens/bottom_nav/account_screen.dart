@@ -8,7 +8,7 @@ import 'package:bookstore/src/screens/home/account/profile_screen.dart';
 import 'package:bookstore/src/screens/home/account/return_screen.dart';
 import 'package:bookstore/src/screens/home/account/setting_screen.dart';
 import 'package:bookstore/src/screens/home/account/shipping_screen.dart';
-import 'package:bookstore/src/widgets/card_account.dart';
+import 'package:bookstore/src/widgets/account/card_account.dart';
 import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import '../../constants/app_constant.dart' as Constants;

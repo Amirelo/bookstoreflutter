@@ -5,6 +5,7 @@ enum FontPresets {
   normal,
   normalBold,
   subTitle,
+  subTitleBold,
   title,
   subHeader,
   header
@@ -48,6 +49,9 @@ class CustomText extends StatelessWidget {
         fontSize = 16;
         fontWeight = FontWeight.normal;
         break;
+      case FontPresets.subTitleBold:
+        fontSize = 16;
+        fontWeight = FontWeight.bold;
       case FontPresets.title:
         fontSize = 18;
         fontWeight = FontWeight.bold;
