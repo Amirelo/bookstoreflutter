@@ -1,5 +1,6 @@
 import 'package:bookstore/src/models/book_model.dart';
 import 'package:bookstore/src/widgets/custom_button.dart';
+import 'package:bookstore/src/widgets/custom_image.dart';
 import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
@@ -19,10 +20,9 @@ class CardProduct extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network(
-            bookModel.imageLink,
+          CustomImage(
+            imageLink: bookModel.imageLink,
             height: 160,
-            fit: BoxFit.cover,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
