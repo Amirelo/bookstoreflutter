@@ -1,3 +1,4 @@
+import 'package:bookstore/src/screens/auth/forgot_password_screen.dart';
 import 'package:bookstore/src/screens/auth/sign_up_screen.dart';
 import 'package:bookstore/src/screens/home/main_screen.dart';
 import 'package:bookstore/src/widgets/custom_button.dart';
@@ -13,8 +14,6 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  bool showPassword = false;
-
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -25,15 +24,16 @@ class _SignInScreenState extends State<SignInScreen> {
           MaterialPageRoute(builder: (context) => const SignUpScreen()));
     }
 
+    void onForgotPasswordPress() {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => const ForgotPasswordScreen()));
+    }
+
     void onSignInPress() {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => const MainScreen()));
-    }
-
-    void onVisibilityPress() {
-      setState(() {
-        showPassword = !showPassword;
-      });
     }
 
     return Scaffold(
@@ -64,9 +64,25 @@ class _SignInScreenState extends State<SignInScreen> {
               paddingBottom: 20,
               hasObscure: true,
             ),
-            const CustomButton(
+            Container(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Row(children: [
+                const Spacer(),
+                TextButton(
+                  onPressed: onForgotPasswordPress,
+                  style: TextButton.styleFrom(
+                    alignment: Alignment.centerRight,
+                  ),
+                  child: const Text(
+                    "Forgot password",
+                  ),
+                ),
+              ]),
+            ),
+            CustomButton(
               title: "Sign In",
               paddingBottom: 20,
+              onPress: onSignInPress,
             ),
             const CustomText(
               title: "Or sign in with",
@@ -92,7 +108,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             TextButton(
                 onPressed: onSignUpPress,
                 child: const Text("Don't have an account? Sign up here")),
