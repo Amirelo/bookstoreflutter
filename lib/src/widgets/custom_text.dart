@@ -18,6 +18,7 @@ class CustomText extends StatelessWidget {
   final double paddingRight;
   final double padding;
   final FontPresets fontPreset;
+  final Color textColor;
 
   const CustomText(
       {super.key,
@@ -27,7 +28,8 @@ class CustomText extends StatelessWidget {
       this.paddingBottom = 0,
       this.paddingLeft = 0,
       this.paddingRight = 0,
-      this.fontPreset = FontPresets.normal});
+      this.fontPreset = FontPresets.normal,
+      this.textColor = Colors.black});
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +74,8 @@ class CustomText extends StatelessWidget {
             right: paddingRight != 0 ? paddingRight : padding),
         child: (Text(
           title,
-          style: TextStyle(fontSize: fontSize, fontWeight: fontWeight),
+          style: TextStyle(
+              fontSize: fontSize, fontWeight: fontWeight, color: textColor),
         )));
   }
 }
