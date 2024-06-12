@@ -17,10 +17,11 @@ class SplashSCreen extends StatelessWidget {
       body: Container(
         width: const BoxConstraints().maxWidth,
         decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Colors.green, Colors.blue],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft)),
+            gradient: LinearGradient(colors: [
+          Color(0xFFFF99A2),
+          Color(0xFFE406B5),
+          Color(0xFF35088A)
+        ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
         child: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

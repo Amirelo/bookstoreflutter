@@ -10,23 +10,26 @@ class CustomImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (Image.network(
-      imageLink,
-      width: width,
-      height: height,
-      fit: BoxFit.cover,
-      loadingBuilder: (context, child, loadingProgress) {
-        if (loadingProgress == null) {
-          return child;
-        }
-        return Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8), border: Border.all()),
-            alignment: Alignment.center,
-            width: width,
-            height: height,
-            child: const CircularProgressIndicator());
-      },
-    ));
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8),
+      child: (Image.network(
+        imageLink,
+        width: width,
+        height: height,
+        fit: BoxFit.cover,
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) {
+            return child;
+          }
+          return Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8), border: Border.all()),
+              alignment: Alignment.center,
+              width: width,
+              height: height,
+              child: const CircularProgressIndicator());
+        },
+      )),
+    );
   }
 }

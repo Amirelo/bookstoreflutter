@@ -7,6 +7,7 @@ class CustomInput extends StatefulWidget {
   final double paddingBottom;
   final TextEditingController controller;
   final bool hasObscure;
+  final InputBorder inputBorder;
 
   const CustomInput(
       {super.key,
@@ -14,7 +15,8 @@ class CustomInput extends StatefulWidget {
       required this.controller,
       this.paddingTop = 0,
       this.paddingBottom = 0,
-      this.hasObscure = false});
+      this.hasObscure = false,
+      this.inputBorder = const UnderlineInputBorder()});
 
   @override
   State<CustomInput> createState() => _CustomInputState();
@@ -51,6 +53,7 @@ class _CustomInputState extends State<CustomInput> {
           obscureText: showText,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.only(bottom: -10),
+            border: widget.inputBorder,
             labelText: widget.hint,
             suffixIcon: widget.hasObscure
                 ? IconButton(

@@ -16,7 +16,8 @@ class CardProduct extends StatelessWidget {
       width: 200,
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-          color: Colors.blue, borderRadius: BorderRadius.circular(8)),
+          color: const Color.fromARGB(255, 225, 225, 225),
+          borderRadius: BorderRadius.circular(8)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
