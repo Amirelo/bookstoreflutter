@@ -11,7 +11,7 @@ import 'package:bookstore/src/screens/home/account/shipping_screen.dart';
 import 'package:bookstore/src/widgets/account/card_account.dart';
 import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
-import '../../constants/app_constant.dart' as Constants;
+import '../../constants/app_constant.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -20,31 +20,31 @@ class AccountScreen extends StatelessWidget {
     void onCardPress(String navName) {
       Widget screen;
       switch (navName) {
-        case Constants.NAV_PROFILE:
+        case NAV_PROFILE:
           screen = const ProfileScreen();
           break;
-        case Constants.NAV_NOTIFICATION:
+        case NAV_NOTIFICATION:
           screen = const NotifcationScreen();
           break;
-        case Constants.NAV_ORDER:
+        case NAV_ORDER:
           screen = const OrderScreen();
           break;
-        case Constants.NAV_ADDRESS:
+        case NAV_ADDRESS:
           screen = const AddressScreen();
           break;
-        case Constants.NAV_COUPON:
+        case NAV_COUPON:
           screen = const CouponScreen();
           break;
-        case Constants.NAV_SETTING:
+        case NAV_SETTING:
           screen = const SettingScreen();
           break;
-        case Constants.NAV_ABOUT_US:
+        case NAV_ABOUT_US:
           screen = const AboutUsScreen();
           break;
-        case Constants.NAV_SHIPPING:
+        case NAV_SHIPPING:
           screen = const ShippingScreen();
           break;
-        case Constants.NAV_RETURN_POLICY:
+        case NAV_RETURN_POLICY:
           screen = const ReturnScreen();
           break;
         default:
@@ -82,32 +82,32 @@ class AccountScreen extends StatelessWidget {
                 CardAccount(
                   title: "Profile",
                   icon: Icons.person,
-                  onPress: () => onCardPress(Constants.NAV_PROFILE),
+                  onPress: () => onCardPress(NAV_PROFILE),
                 ),
                 CardAccount(
                   title: "Notification",
                   icon: Icons.notifications,
-                  onPress: () => onCardPress(Constants.NAV_NOTIFICATION),
+                  onPress: () => onCardPress(NAV_NOTIFICATION),
                 ),
                 CardAccount(
                   title: "Orders",
                   icon: Icons.person,
-                  onPress: () => onCardPress(Constants.NAV_ORDER),
+                  onPress: () => onCardPress(NAV_ORDER),
                 ),
                 CardAccount(
                   title: "Addresses",
                   icon: Icons.person,
-                  onPress: () => onCardPress(Constants.NAV_ADDRESS),
+                  onPress: () => onCardPress(NAV_ADDRESS),
                 ),
                 CardAccount(
                   title: "Coupons",
                   icon: Icons.discount,
-                  onPress: () => onCardPress(Constants.NAV_COUPON),
+                  onPress: () => onCardPress(NAV_COUPON),
                 ),
                 CardAccount(
                   title: "Settings",
                   icon: Icons.settings,
-                  onPress: () => onCardPress(Constants.NAV_SETTING),
+                  onPress: () => onCardPress(NAV_SETTING),
                 ),
                 CardAccount(
                   title: "Logout",
@@ -132,17 +132,17 @@ class AccountScreen extends StatelessWidget {
               CardAccount(
                 title: "About us",
                 icon: Icons.group,
-                onPress: () => onCardPress(Constants.NAV_ABOUT_US),
+                onPress: () => onCardPress(NAV_ABOUT_US),
               ),
               CardAccount(
                 title: "Shipping",
                 icon: Icons.delivery_dining,
-                onPress: () => onCardPress(Constants.NAV_SHIPPING),
+                onPress: () => onCardPress(NAV_SHIPPING),
               ),
               CardAccount(
                 title: "About us",
                 icon: Icons.assignment_returned,
-                onPress: () => onCardPress(Constants.NAV_RETURN_POLICY),
+                onPress: () => onCardPress(NAV_RETURN_POLICY),
               ),
             ],
           )

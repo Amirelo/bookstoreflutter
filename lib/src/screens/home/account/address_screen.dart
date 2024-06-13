@@ -5,6 +5,6 @@ class AddressScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (Scaffold(body: Text("Address Screen")));
+    return (const Scaffold(body: Text("Address Screen")));
   }
 }

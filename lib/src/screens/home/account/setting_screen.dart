@@ -5,6 +5,6 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (Scaffold(body: Text("Setting Screen")));
+    return (const Scaffold(body: Text("Setting Screen")));
   }
 }

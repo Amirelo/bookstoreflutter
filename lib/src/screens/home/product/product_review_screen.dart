@@ -5,7 +5,6 @@ class ProductReviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return (Scaffold(body: Text("Product Review Screen")));
+    return (const Scaffold(body: Text("Product Review Screen")));
   }
 }

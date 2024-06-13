@@ -5,7 +5,6 @@ import 'package:bookstore/src/widgets/custom_image.dart';
 import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:bookstore/src/widgets/product/card_product.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -26,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
         categoryList = data;
       });
     } on Exception catch (error) {
-      debugPrint("----Fail to get data: " + error.toString());
+      debugPrint("----Fail to get data: $error");
     }
   }
 

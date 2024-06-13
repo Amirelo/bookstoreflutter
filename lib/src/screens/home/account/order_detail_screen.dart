@@ -5,6 +5,6 @@ class OrderDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (Scaffold(body: Text("Order Detail Screen")));
+    return (const Scaffold(body: Text("Order Detail Screen")));
   }
 }

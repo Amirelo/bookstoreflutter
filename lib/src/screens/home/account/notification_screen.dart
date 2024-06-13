@@ -5,6 +5,6 @@ class NotifcationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (Scaffold(body: Text("Notification screen")));
+    return (const Scaffold(body: Text("Notification screen")));
   }
 }

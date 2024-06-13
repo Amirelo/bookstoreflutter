@@ -5,6 +5,6 @@ class ShippingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (Scaffold(body: Text("Shipping Screen")));
+    return (const Scaffold(body: Text("Shipping Screen")));
   }
 }

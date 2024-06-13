@@ -5,7 +5,6 @@ class EBookScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return (Scaffold(body: Text("E-book screen")));
+    return (const Scaffold(body: Text("E-book screen")));
   }
 }

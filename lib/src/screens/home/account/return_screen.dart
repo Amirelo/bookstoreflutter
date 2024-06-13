@@ -5,6 +5,6 @@ class ReturnScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (Scaffold(body: Text("Return Screen")));
+    return (const Scaffold(body: Text("Return Screen")));
   }
 }

@@ -9,14 +9,14 @@ class ExploreScreen extends StatelessWidget {
     TextEditingController searchController = TextEditingController();
     return Scaffold(
         body: Container(
-      padding: EdgeInsets.only(top: 40, left: 16, right: 16),
+      padding: const EdgeInsets.only(top: 40, left: 16, right: 16),
       child: Column(children: [
         CustomInput(
           hint: "Search",
           controller: searchController,
           inputBorder: const OutlineInputBorder(),
         ),
-        Row(
+        const Row(
           children: [
             Icon(Icons.filter),
             Text("Filter"),
@@ -26,7 +26,7 @@ class ExploreScreen extends StatelessWidget {
             Text("View"),
           ],
         ),
-        Wrap(
+        const Wrap(
             // Books
             )
       ]),

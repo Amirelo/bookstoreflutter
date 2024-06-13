@@ -5,7 +5,6 @@ class CartInfoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return (Scaffold(body: Text("Cart Info Screen")));
+    return (const Scaffold(body: Text("Cart Info Screen")));
   }
 }

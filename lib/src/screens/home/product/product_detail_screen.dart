@@ -5,7 +5,6 @@ class ProductDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return (Scaffold(body: Text("Product detail screen")));
+    return (const Scaffold(body: Text("Product detail screen")));
   }
 }

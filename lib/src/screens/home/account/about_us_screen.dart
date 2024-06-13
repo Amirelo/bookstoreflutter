@@ -5,6 +5,6 @@ class AboutUsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (Scaffold(body: Text("About Us Screen")));
+    return (const Scaffold(body: Text("About Us Screen")));
   }
 }

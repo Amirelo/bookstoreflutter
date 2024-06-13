@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 const NAV_PROFILE = "PROFILE";
 const NAV_NOTIFICATION = "NOTIFICATION";
 const NAV_ORDER = "ORDER";
