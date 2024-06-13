@@ -1,4 +1,3 @@
-import 'package:bookstore/src/models/book_model.dart';
 import 'package:bookstore/src/screens/auth/forgot_password_screen.dart';
 import 'package:bookstore/src/screens/auth/sign_up_screen.dart';
 import 'package:bookstore/src/screens/home/main_screen.dart';
@@ -34,7 +33,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
     void onSignInPress() {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Welcome back"),
+        content: const Text("Welcome back"),
         action: SnackBarAction(
           label: "Dismiss",
           onPressed: () {

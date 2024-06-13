@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:bookstore/src/models/book_model.dart';
-import 'package:bookstore/src/widgets/custom_button.dart';
+import 'package:bookstore/src/models/category_model.dart';
+import 'package:bookstore/src/providers/category_provider.dart';
 import 'package:bookstore/src/widgets/custom_image.dart';
 import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:bookstore/src/widgets/product/card_product.dart';
@@ -16,36 +15,44 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Future<http.Response> fetchData() {
-    var data =
-        http.get(Uri.parse("https://jsonplaceholder.typicode.com/todos/1"));
-    log("Data: " + data.toString());
-    return data;
+  List<CategoryModel> categoryList = List.empty();
+
+  void getData() async {
+    debugPrint("----Getting data");
+    try {
+      List<CategoryModel> data = await getCategories();
+      debugPrint("-----data: $categoryList");
+      setState(() {
+        categoryList = data;
+      });
+    } on Exception catch (error) {
+      debugPrint("----Fail to get data: " + error.toString());
+    }
   }
 
   @override
   void initState() {
-    fetchData();
+    getData();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    BookModel book1 = BookModel(
+    const BookModel book1 = BookModel(
         "1",
         "Test book 1",
         5000,
         "Collins",
         "This is a test",
         "https://images.pexels.com/photos/16446088/pexels-photo-16446088/free-photo-of-colorful-cloths-over-house-door.jpeg");
-    BookModel book2 = BookModel(
+    const BookModel book2 = BookModel(
         "2",
         "Test book 2",
         8000,
         "Collins",
         "This is a test",
         "https://images.pexels.com/photos/16446088/pexels-photo-16446088/free-photo-of-colorful-cloths-over-house-door.jpeg");
-    BookModel book3 = BookModel(
+    const BookModel book3 = BookModel(
         "3",
         "Test book 3",
         53788,
@@ -80,7 +87,32 @@ class _HomeScreenState extends State<HomeScreen> {
           const Align(
             alignment: Alignment.topLeft,
             child: CustomText(
-              title: "Products",
+              title: "Categories",
+              paddingBottom: 8,
+              fontPreset: FontPresets.title,
+            ),
+          ),
+          SizedBox(
+            width: const BoxConstraints().maxWidth,
+            height: 200,
+            child: ListView.builder(
+              itemCount: categoryList.length,
+              itemBuilder: (context, index) => Container(
+                width: 100,
+                height: 40,
+                color: Colors.green,
+                child: CustomText(
+                  title: categoryList[index].name,
+                  fontPreset: FontPresets.title,
+                ),
+              ),
+            ),
+          ),
+          const Align(
+            alignment: Alignment.topLeft,
+            child: CustomText(
+              title: "Bestsellers",
+              paddingBottom: 8,
               fontPreset: FontPresets.title,
             ),
           ),

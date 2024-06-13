@@ -1,6 +1,5 @@
 import 'package:bookstore/src/widgets/custom_button.dart';
 import 'package:bookstore/src/widgets/custom_image.dart';
-import 'package:bookstore/src/widgets/custom_input.dart';
 import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
@@ -9,10 +8,10 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return (Scaffold(
-        body: Container(
+        body: SizedBox(
       width: const BoxConstraints().maxWidth,
       height: 200,
-      child: Row(
+      child: const Row(
         children: [
           CustomImage(
             imageLink:
