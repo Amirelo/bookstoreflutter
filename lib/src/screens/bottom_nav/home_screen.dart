@@ -1,7 +1,6 @@
 import 'package:bookstore/src/models/book_model.dart';
 import 'package:bookstore/src/models/category_model.dart';
 import 'package:bookstore/src/providers/category_provider.dart';
-import 'package:bookstore/src/widgets/custom_button.dart';
 import 'package:bookstore/src/widgets/custom_image.dart';
 import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:bookstore/src/widgets/product/card_category.dart';
@@ -24,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen>
     debugPrint("----Getting data");
     try {
       List<CategoryModel> data = await getCategories();
-      debugPrint("-----data: $categoryList");
+      debugPrint("-----categories: $categoryList");
       setState(() {
         categoryList = data;
       });
@@ -41,13 +40,6 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    late final AnimationController animController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 2000));
-
-    late final Animation<double> testAnimation = Tween(begin: 0.0, end: 1.0)
-        .animate(
-            CurvedAnimation(parent: animController, curve: Curves.easeOut));
-
     List<BookModel> bookList = List.generate(
         3,
         (index) => BookModel(
@@ -65,10 +57,6 @@ class _HomeScreenState extends State<HomeScreen>
           width: const BoxConstraints().maxWidth,
           padding: const EdgeInsets.only(top: 40, left: 16, right: 16),
           child: Column(children: [
-            CustomButton(
-              title: "Rotate",
-              onPress: () => animController..forward(),
-            ),
             CustomImage(
               imageLink:
                   "https://images.pexels.com/photos/16446088/pexels-photo-16446088/free-photo-of-colorful-cloths-over-house-door.jpeg",

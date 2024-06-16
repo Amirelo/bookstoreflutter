@@ -59,9 +59,9 @@ class _CardCategoryState extends State<CardCategory>
                 return Positioned(
                   top: 0,
                   child: Transform(
-                    transform: Matrix4.rotationY(math.pi / 4)
+                    transform: Matrix4.rotationY(math.pi / 2)
                       ..setEntry(2, 2, 0.001)
-                      ..rotateY((1 - animController.value) * math.pi / 4),
+                      ..rotateY((-animController.value) * math.pi / 2),
                     alignment: Alignment.center,
                     child: child,
                   ),

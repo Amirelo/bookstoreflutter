@@ -4,7 +4,6 @@ import 'package:bookstore/src/models/book_model.dart';
 import 'package:bookstore/src/widgets/custom_input.dart';
 import 'package:bookstore/src/widgets/product/card_product.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class ExploreScreen extends StatelessWidget {
   const ExploreScreen({super.key});
@@ -19,7 +18,7 @@ class ExploreScreen extends StatelessWidget {
             Random().nextInt(50000),
             "Author $index",
             "A test description for test book $index",
-            "https://images.pexels.com/photos/7408586/pexels-photo-7408586.jpeg"));
+            "https://images.pexels.com/photos/16446088/pexels-photo-16446088/free-photo-of-colorful-cloths-over-house-door.jpeg"));
     TextEditingController searchController = TextEditingController();
     return Scaffold(
         body: Container(
