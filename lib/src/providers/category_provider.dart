@@ -11,8 +11,8 @@ Future<List<CategoryModel>> getCategories() async {
     for (var doc in querySnapshot.docs) {
       var curData = doc.data();
       debugPrint("-----${doc.id} => ${doc.data()}");
-      CategoryModel category =
-          CategoryModel(doc.id, curData["name"], curData["image"]);
+      CategoryModel category = CategoryModel(
+          doc.id, curData["name"], curData["image"], curData["description"]);
       newList.add(category);
     }
     return newList;

@@ -4,6 +4,7 @@ import 'package:bookstore/src/providers/category_provider.dart';
 import 'package:bookstore/src/widgets/custom_button.dart';
 import 'package:bookstore/src/widgets/custom_image.dart';
 import 'package:bookstore/src/widgets/custom_text.dart';
+import 'package:bookstore/src/widgets/product/card_category.dart';
 import 'package:bookstore/src/widgets/product/card_product.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
@@ -47,29 +48,15 @@ class _HomeScreenState extends State<HomeScreen>
         .animate(
             CurvedAnimation(parent: animController, curve: Curves.easeOut));
 
-    const BookModel book1 = BookModel(
-        "1",
-        "Test book 1",
-        5000,
-        "Collins",
-        "This is a test",
-        "https://images.pexels.com/photos/16446088/pexels-photo-16446088/free-photo-of-colorful-cloths-over-house-door.jpeg");
-    const BookModel book2 = BookModel(
-        "2",
-        "Test book 2",
-        8000,
-        "Collins",
-        "This is a test",
-        "https://images.pexels.com/photos/16446088/pexels-photo-16446088/free-photo-of-colorful-cloths-over-house-door.jpeg");
-    const BookModel book3 = BookModel(
-        "3",
-        "Test book 3",
-        53788,
-        "Collins",
-        "This is a test",
-        "https://images.pexels.com/photos/16446088/pexels-photo-16446088/free-photo-of-colorful-cloths-over-house-door.jpeg");
-    List<BookModel> bookList = <BookModel>[book1, book2, book3];
-    bookList.add(book1);
+    List<BookModel> bookList = List.generate(
+        3,
+        (index) => BookModel(
+            index.toString(),
+            "Test book $index",
+            math.Random().nextInt(200000) + 50000,
+            "Author $index",
+            "This is a test #$index",
+            "https://images.pexels.com/photos/16446088/pexels-photo-16446088/free-photo-of-colorful-cloths-over-house-door.jpeg"));
 
     return (Scaffold(
       body: SingleChildScrollView(
@@ -116,30 +103,9 @@ class _HomeScreenState extends State<HomeScreen>
                 itemCount: categoryList.length > 5 ? 5 : categoryList.length,
                 separatorBuilder: (builder, index) => const SizedBox(width: 40),
                 itemBuilder: (context, index) => SizedBox(
-                  child: Column(children: [
-                    AnimatedBuilder(
-                      animation: testAnimation,
-                      builder: (_, child) {
-                        return Transform(
-                          transform: Matrix4.identity()
-                            ..setEntry(2, 2, 0.001)
-                            ..rotateY(animController.value * math.pi / 2),
-                          alignment: Alignment.center,
-                          child: child,
-                        );
-                      },
-                      child: CustomImage(
-                        imageLink: categoryList[index].image,
-                        width: 200,
-                        height: 300,
-                      ),
-                    ),
-                    CustomText(
-                      title: categoryList[index].name,
-                      fontPreset: FontPresets.title,
-                    ),
-                  ]),
-                ),
+                    child: CardCategory(
+                  category: categoryList[index],
+                )),
               ),
             ),
             const Align(
