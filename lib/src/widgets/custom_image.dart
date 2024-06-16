@@ -22,12 +22,16 @@ class CustomImage extends StatelessWidget {
             return child;
           }
           return Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8), border: Border.all()),
-              alignment: Alignment.center,
               width: width,
               height: height,
-              child: const CircularProgressIndicator());
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(),
+              ),
+              alignment: Alignment.center,
+              child: const CircularProgressIndicator(
+                color: Colors.amber,
+              ));
         },
       )),
     );
