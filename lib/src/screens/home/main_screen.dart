@@ -1,8 +1,8 @@
-import 'package:bookstore/src/screens/bottom_nav/e_book_screen.dart';
-import 'package:bookstore/src/screens/bottom_nav/account_screen.dart';
-import 'package:bookstore/src/screens/bottom_nav/cart_screen.dart';
-import 'package:bookstore/src/screens/bottom_nav/explore_screen.dart';
-import 'package:bookstore/src/screens/bottom_nav/home_screen.dart';
+import 'package:bookstore/src/screens/home/bottom_nav/e_book_screen.dart';
+import 'package:bookstore/src/screens/home/bottom_nav/account_screen.dart';
+import 'package:bookstore/src/screens/home/bottom_nav/cart_screen.dart';
+import 'package:bookstore/src/screens/home/bottom_nav/explore_screen.dart';
+import 'package:bookstore/src/screens/home/bottom_nav/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
