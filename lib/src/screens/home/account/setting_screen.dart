@@ -1,3 +1,4 @@
+import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -5,6 +6,12 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (const Scaffold(body: Text("Setting Screen")));
+    return (Scaffold(
+        body: Column(
+      children: [
+        CustomText(title: "Language"),
+        CustomText(title: "Theme"),
+      ],
+    )));
   }
 }

@@ -22,10 +22,14 @@ class CouponScreen extends StatelessWidget {
     return (Scaffold(
       body: Column(
         children: [
-          ListView.builder(
-              itemCount: couponList.length,
-              itemBuilder: (context, index) =>
-                  CardCoupon(coupon: couponList[index])),
+          Container(
+            width: const BoxConstraints().maxWidth,
+            height: 300,
+            child: ListView.builder(
+                itemCount: couponList.length,
+                itemBuilder: (context, index) =>
+                    CardCoupon(coupon: couponList[index])),
+          ),
         ],
       ),
     ));

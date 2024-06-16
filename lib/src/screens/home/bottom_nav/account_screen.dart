@@ -140,7 +140,7 @@ class AccountScreen extends StatelessWidget {
                 onPress: () => onCardPress(NAV_SHIPPING),
               ),
               CardAccount(
-                title: "About us",
+                title: "Return policy",
                 icon: Icons.assignment_returned,
                 onPress: () => onCardPress(NAV_RETURN_POLICY),
               ),

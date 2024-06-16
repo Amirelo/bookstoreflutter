@@ -15,12 +15,8 @@ class AboutUsScreen extends StatelessWidget {
             height: 200,
             imageLink:
                 "https://images.pexels.com/photos/13862436/pexels-photo-13862436.png"),
-        CustomButton(title: "Username"),
-        CustomButton(title: "Email"),
-        CustomButton(title: "Change Password"),
-        CustomButton(title: "Recenly Viewed"),
-        CustomButton(title: "Deactivate account"),
-        CustomButton(title: "Transfer account"),
+        CustomButton(title: "Name"),
+        CustomButton(title: "Description"),
       ],
     )));
   }

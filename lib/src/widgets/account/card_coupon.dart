@@ -10,6 +10,8 @@ class CardCoupon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return (Container(
+      width: const BoxConstraints().maxWidth,
+      height: 200,
       child: Row(children: [
         CustomImage(
           imageLink: coupon.image,
