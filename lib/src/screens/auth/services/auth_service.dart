@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 Future<UserCredential?> loginWithPasswordService(
@@ -34,4 +35,16 @@ Future<UserCredential> loginWithGoogle() async {
       accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
 
   return await FirebaseAuth.instance.signInWithCredential(credential);
+}
+
+Future<UserCredential?> loginWithFacebook() async {
+  try {
+    final LoginResult loginResult = await FacebookAuth.instance.login();
+    final OAuthCredential facebookCredential =
+        FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
+    return FirebaseAuth.instance.signInWithCredential(facebookCredential);
+  } catch (error) {
+    debugPrint("------Error signing with facebook: $error");
+    return null;
+  }
 }

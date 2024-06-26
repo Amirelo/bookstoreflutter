@@ -100,8 +100,11 @@ class _SignInScreenState extends State<SignInScreen> {
       }
     }
 
-    void onFacebookPress() {
-      popupMessage("Facebook Sign In", context);
+    void onFacebookPress() async {
+      var res = await loginWithFacebook();
+      if (context.mounted && res != null) {
+        popupMessage("Welcome back ${res.user!.displayName}", context);
+      }
     }
 
     void onApplePress() {
