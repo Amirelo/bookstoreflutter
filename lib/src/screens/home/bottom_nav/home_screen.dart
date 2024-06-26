@@ -1,6 +1,8 @@
 import 'package:bookstore/src/models/book_model.dart';
 import 'package:bookstore/src/models/category_model.dart';
 import 'package:bookstore/src/providers/category_provider.dart';
+import 'package:bookstore/src/screens/home/bottom_nav/explore_screen.dart';
+import 'package:bookstore/src/screens/home/product/product_detail_screen.dart';
 import 'package:bookstore/src/widgets/custom_image.dart';
 import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:bookstore/src/widgets/product/card_category.dart';
@@ -9,7 +11,8 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final Function() onCategoryPress;
+  const HomeScreen({super.key, required this.onCategoryPress});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -40,6 +43,11 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
+    void onProductPress() {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const ProductDetailScreen()));
+    }
+
     List<BookModel> bookList = List.generate(
         3,
         (index) => BookModel(
@@ -92,6 +100,7 @@ class _HomeScreenState extends State<HomeScreen>
                 separatorBuilder: (builder, index) => const SizedBox(width: 40),
                 itemBuilder: (context, index) => SizedBox(
                     child: CardCategory(
+                  onPress: widget.onCategoryPress,
                   category: categoryList[index],
                 )),
               ),
@@ -112,7 +121,10 @@ class _HomeScreenState extends State<HomeScreen>
                 scrollDirection: Axis.horizontal,
                 itemCount: bookList.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return CardProduct(bookModel: bookList[index]);
+                  return CardProduct(
+                    bookModel: bookList[index],
+                    onPress: onProductPress,
+                  );
                 },
                 separatorBuilder: (BuildContext context, int index) =>
                     const SizedBox(

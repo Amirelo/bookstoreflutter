@@ -1,9 +1,11 @@
+import 'package:bookstore/src/widgets/button/button_text_custom.dart';
 import 'package:bookstore/src/widgets/custom_image.dart';
 import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class CardEBook extends StatelessWidget {
-  const CardEBook({super.key});
+  final Function()? onPress;
+  const CardEBook({super.key, this.onPress});
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,10 @@ class CardEBook extends StatelessWidget {
               CustomText(title: "Book title"),
               CustomText(title: "Description"),
               CustomText(title: "Progress"),
+              ButtonTextCustom(
+                title: "Read now",
+                onPress: onPress,
+              ),
             ],
           )
         ],

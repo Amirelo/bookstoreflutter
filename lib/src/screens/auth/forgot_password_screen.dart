@@ -1,4 +1,4 @@
-import 'package:bookstore/src/widgets/custom_button.dart';
+import 'package:bookstore/src/widgets/button/button_text_custom.dart';
 import 'package:bookstore/src/widgets/custom_input.dart';
 import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +57,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         paddingBottom: 20,
                         hasObscure: true,
                       ),
-                      CustomButton(
+                      ButtonTextCustom(
                         title: "Send Verification Code",
                         onPress: onSendVerificationPress,
                       )
@@ -71,7 +71,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             controller: emailController,
                             paddingBottom: 20,
                           ),
-                          CustomButton(
+                          ButtonTextCustom(
                             title: "Send Verification Code",
                             onPress: onSendVerificationPress,
                           )
@@ -84,7 +84,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             controller: verificationController,
                             paddingBottom: 20,
                           ),
-                          CustomButton(
+                          ButtonTextCustom(
                             title: "Verify",
                             onPress: onVerifyPress,
                           )

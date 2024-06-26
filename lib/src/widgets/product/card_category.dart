@@ -6,7 +6,9 @@ import 'dart:math' as math;
 
 class CardCategory extends StatefulWidget {
   final CategoryModel category;
-  const CardCategory({super.key, required this.category});
+  final Function() onPress;
+  const CardCategory(
+      {super.key, required this.category, required this.onPress});
 
   @override
   State<CardCategory> createState() => _CardCategoryState();
@@ -20,7 +22,7 @@ class _CardCategoryState extends State<CardCategory>
   @override
   Widget build(BuildContext context) {
     return (InkWell(
-      onTap: () {},
+      onTap: widget.onPress,
       onLongPress: () {
         animController.forward();
       },
@@ -69,9 +71,11 @@ class _CardCategoryState extends State<CardCategory>
               },
               child: Positioned(
                 top: 0,
-                child: SizedBox(
+                child: Container(
                   width: 200,
                   height: 300,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(8)),
                   child: CustomText(
                     title: widget.category.description,
                   ),

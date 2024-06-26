@@ -1,4 +1,4 @@
-import 'package:bookstore/src/widgets/custom_button.dart';
+import 'package:bookstore/src/widgets/button/button_text_custom.dart';
 import 'package:bookstore/src/widgets/custom_input.dart';
 import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +66,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 hasObscure: true,
                 paddingBottom: 20,
               ),
-              CustomButton(onPress: onSignUpPress, title: "Sign Up")
+              ButtonTextCustom(onPress: onSignUpPress, title: "Sign Up")
             ]),
           ),
         )));

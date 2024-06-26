@@ -2,7 +2,7 @@
 
 import 'package:bookstore/src/models/cart_model.dart';
 import 'package:bookstore/src/screens/home/cart/cart_info_screen.dart';
-import 'package:bookstore/src/widgets/custom_button.dart';
+import 'package:bookstore/src/widgets/button/button_text_custom.dart';
 import 'package:bookstore/src/widgets/custom_image.dart';
 import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:bookstore/src/widgets/product/card_cart.dart';
@@ -21,7 +21,7 @@ class CartScreen extends StatelessWidget {
     return (Scaffold(
         body: Column(children: [
       CardCart(cart: cart),
-      CustomButton(
+      ButtonTextCustom(
         title: "Continue",
         onPress: onContinuePress,
       )

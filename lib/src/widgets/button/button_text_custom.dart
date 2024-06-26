@@ -1,13 +1,13 @@
 import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
-class CustomButton extends StatelessWidget {
+class ButtonTextCustom extends StatelessWidget {
   final String title;
   final double width;
   final double paddingTop;
   final double paddingBottom;
   final Function()? onPress;
-  const CustomButton(
+  const ButtonTextCustom(
       {super.key,
       required this.title,
       this.width = 0,

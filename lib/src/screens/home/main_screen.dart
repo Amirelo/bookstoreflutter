@@ -23,12 +23,22 @@ class _MainScreenState extends State<MainScreen> {
       });
     }
 
-    const List<Widget> screens = [
-      HomeScreen(),
-      ExploreScreen(),
-      EBookScreen(),
-      CartScreen(),
-      AccountScreen()
+    void onCategoryPress() {
+      setState(() {
+        selectedIndex = 1;
+      });
+    }
+
+    ;
+
+    List<Widget> screens = [
+      HomeScreen(
+        onCategoryPress: onCategoryPress,
+      ),
+      const ExploreScreen(),
+      const EBookScreen(),
+      const CartScreen(),
+      const AccountScreen()
     ];
 
     return (Scaffold(
@@ -37,7 +47,7 @@ class _MainScreenState extends State<MainScreen> {
         currentIndex: selectedIndex,
         type: BottomNavigationBarType.fixed,
         onTap: onItemTapped,
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.deepPurple,
         selectedItemColor: Colors.white,
         showUnselectedLabels: false,
         items: const [

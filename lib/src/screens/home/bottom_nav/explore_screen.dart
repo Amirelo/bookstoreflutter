@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:bookstore/src/models/book_model.dart';
+import 'package:bookstore/src/screens/home/product/product_detail_screen.dart';
 import 'package:bookstore/src/widgets/custom_input.dart';
 import 'package:bookstore/src/widgets/product/card_product.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,11 @@ class ExploreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void onProductPress() {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const ProductDetailScreen()));
+    }
+
     List<BookModel> bookList = List.generate(
         30,
         (index) => BookModel(
@@ -71,7 +77,10 @@ class ExploreScreen extends StatelessWidget {
             itemCount: bookList.length,
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int index) {
-              return CardProduct(bookModel: bookList[index]);
+              return CardProduct(
+                bookModel: bookList[index],
+                onPress: onProductPress,
+              );
             },
           ),
         )

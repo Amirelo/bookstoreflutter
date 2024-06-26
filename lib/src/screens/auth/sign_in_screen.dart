@@ -1,7 +1,7 @@
 import 'package:bookstore/src/screens/auth/forgot_password_screen.dart';
 import 'package:bookstore/src/screens/auth/sign_up_screen.dart';
 import 'package:bookstore/src/screens/home/main_screen.dart';
-import 'package:bookstore/src/widgets/custom_button.dart';
+import 'package:bookstore/src/widgets/button/button_text_custom.dart';
 import 'package:bookstore/src/widgets/custom_input.dart';
 import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +43,38 @@ class _SignInScreenState extends State<SignInScreen> {
       ));
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => const MainScreen()));
+    }
+
+    void onGooglePress() {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Google Sign In"),
+        action: SnackBarAction(
+            label: "Dismiss",
+            onPressed: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            }),
+      ));
+    }
+
+    void onFacebookPress() {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("Facebook Sign In"),
+          action: SnackBarAction(
+              label: "Dismiss",
+              onPressed: () {
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              })));
+    }
+
+    void onApplePress() {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Apple Sign In"),
+        action: SnackBarAction(
+            label: "Dismiss",
+            onPressed: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            }),
+      ));
     }
 
     return Scaffold(
@@ -88,7 +120,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
               ]),
             ),
-            CustomButton(
+            ButtonTextCustom(
               title: "Sign In",
               paddingBottom: 20,
               onPress: onSignInPress,
@@ -100,20 +132,20 @@ class _SignInScreenState extends State<SignInScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                CustomButton(
+                ButtonTextCustom(
                   title: "Google",
                   width: 110,
-                  onPress: () {},
+                  onPress: onGooglePress,
                 ),
-                CustomButton(
+                ButtonTextCustom(
                   title: "Facebook",
                   width: 110,
-                  onPress: () {},
+                  onPress: onFacebookPress,
                 ),
-                CustomButton(
+                ButtonTextCustom(
                   title: "Apple",
                   width: 110,
-                  onPress: () {},
+                  onPress: onApplePress,
                 ),
               ],
             ),
