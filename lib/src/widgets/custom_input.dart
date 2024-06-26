@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class CustomInput extends StatefulWidget {
   final String hint;
+  final String? errorMsg;
   final double paddingTop;
   final double paddingBottom;
   final TextEditingController controller;
@@ -13,6 +14,7 @@ class CustomInput extends StatefulWidget {
       {super.key,
       required this.hint,
       required this.controller,
+      this.errorMsg,
       this.paddingTop = 0,
       this.paddingBottom = 0,
       this.hasObscure = false,
@@ -53,6 +55,7 @@ class _CustomInputState extends State<CustomInput> {
           obscureText: showText,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.only(bottom: -10),
+            errorText: widget.errorMsg != "" ? widget.errorMsg : null,
             border: widget.inputBorder,
             labelText: widget.hint,
             suffixIcon: widget.hasObscure

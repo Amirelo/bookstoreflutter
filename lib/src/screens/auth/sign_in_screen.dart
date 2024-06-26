@@ -1,9 +1,12 @@
 import 'package:bookstore/src/screens/auth/forgot_password_screen.dart';
+import 'package:bookstore/src/screens/auth/services/auth_service.dart';
 import 'package:bookstore/src/screens/auth/sign_up_screen.dart';
 import 'package:bookstore/src/screens/home/main_screen.dart';
 import 'package:bookstore/src/widgets/button/button_text_custom.dart';
 import 'package:bookstore/src/widgets/custom_input.dart';
 import 'package:bookstore/src/widgets/custom_text.dart';
+import 'package:bookstore/src/widgets/popup_message.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -14,11 +17,56 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    String emailErr = "";
+    String passwordErr = "";
+
+    bool checkFields() {
+      var status = true;
+      debugPrint("-------- email:${emailController.text}");
+      debugPrint("-------- Password: ${passwordController.text}");
+
+      if (emailController.text == "") {
+        status = false;
+        setState(() {
+          status = false;
+          emailErr = "Field cannot be empty";
+        });
+      } else {
+        setState(() {
+          emailErr = "";
+        });
+      }
+      if (passwordController.text == "") {
+        setState(() {
+          status = false;
+          passwordErr = "Fields cannot be empty";
+        });
+      } else {
+        setState(() {
+          passwordErr = "";
+        });
+      }
+      // debugPrint("-------- emailErr:${emailErr}");
+      // debugPrint("-------- passwordErr: ${passwordErr}");
+      return status;
+    }
+
+    void loginUserWithPassword() async {
+      UserCredential? res = await loginWithPasswordService(
+          emailController.text, passwordController.text, context);
+      if (res != null && context.mounted) {
+        debugPrint("------result: $res");
+        popupMessage("Welcome back ${res.user!.email}", context);
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const MainScreen()));
+      }
+    }
+
     void onSignUpPress() {
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => const SignUpScreen()));
@@ -32,49 +80,32 @@ class _SignInScreenState extends State<SignInScreen> {
     }
 
     void onSignInPress() {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: const Text("Welcome back"),
-        action: SnackBarAction(
-          label: "Dismiss",
-          onPressed: () {
-            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-          },
-        ),
-      ));
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const MainScreen()));
+      if (checkFields()) {
+        loginUserWithPassword();
+      } else {
+        popupMessage("Fields cannot be empty", context);
+      }
     }
 
-    void onGooglePress() {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Google Sign In"),
-        action: SnackBarAction(
-            label: "Dismiss",
-            onPressed: () {
-              ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            }),
-      ));
+    void onGooglePress() async {
+      try {
+        UserCredential res = await loginWithGoogle();
+        if (context.mounted) {
+          popupMessage("Welcome back ${res.user!.displayName}", context);
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const MainScreen()));
+        }
+      } catch (error) {
+        debugPrint("-----Error signing in with google: $error");
+      }
     }
 
     void onFacebookPress() {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text("Facebook Sign In"),
-          action: SnackBarAction(
-              label: "Dismiss",
-              onPressed: () {
-                ScaffoldMessenger.of(context).hideCurrentSnackBar();
-              })));
+      popupMessage("Facebook Sign In", context);
     }
 
     void onApplePress() {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Apple Sign In"),
-        action: SnackBarAction(
-            label: "Dismiss",
-            onPressed: () {
-              ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            }),
-      ));
+      popupMessage("Apple Sign In", context);
     }
 
     return Scaffold(
@@ -95,15 +126,17 @@ class _SignInScreenState extends State<SignInScreen> {
               fontPreset: FontPresets.subTitle,
             ),
             CustomInput(
-              hint: "Username",
-              controller: usernameController,
+              hint: "email",
+              controller: emailController,
               paddingBottom: 12,
+              errorMsg: emailErr,
             ),
             CustomInput(
               hint: "Password",
               controller: passwordController,
               paddingBottom: 20,
               hasObscure: true,
+              errorMsg: passwordErr,
             ),
             Container(
               padding: const EdgeInsets.only(bottom: 10),
