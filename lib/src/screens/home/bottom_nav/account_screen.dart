@@ -1,3 +1,4 @@
+import 'package:bookstore/src/screens/auth/services/auth_service.dart';
 import 'package:bookstore/src/screens/auth/sign_in_screen.dart';
 import 'package:bookstore/src/screens/home/account/about_us_screen.dart';
 import 'package:bookstore/src/screens/home/account/address_screen.dart';
@@ -17,6 +18,13 @@ class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    void onSignOutPress() {
+      signOut();
+
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => const SignInScreen()));
+    }
+
     void onCardPress(String navName) {
       Widget screen;
       switch (navName) {
@@ -112,7 +120,7 @@ class AccountScreen extends StatelessWidget {
                 CardAccount(
                   title: "Logout",
                   icon: Icons.logout,
-                  onPress: onLogoutPress,
+                  onPress: onSignOutPress,
                 ),
               ],
             ),
