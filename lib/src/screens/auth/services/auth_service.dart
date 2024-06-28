@@ -76,6 +76,17 @@ Future<UserCredential?> signUpWithPassword(
   return newUser;
 }
 
+Future<bool> sendPasswordChangeEmail(String email) async {
+  bool status = true;
+  await FirebaseAuth.instance
+      .sendPasswordResetEmail(email: email)
+      .catchError((error) {
+    debugPrint("------Error sending password change email: $error");
+    status = false;
+  });
+  return status;
+}
+
 void signOut() {
   FirebaseAuth.instance.signOut();
   GoogleSignIn().signOut();

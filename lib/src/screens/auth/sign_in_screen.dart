@@ -8,6 +8,7 @@ import 'package:bookstore/src/widgets/custom_text.dart';
 import 'package:bookstore/src/widgets/popup_message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -19,6 +20,20 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  void checkSignIn() async {
+    bool result = await GoogleSignIn().isSignedIn();
+    if (result && context.mounted) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const MainScreen()));
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    checkSignIn();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,83 +128,86 @@ class _SignInScreenState extends State<SignInScreen> {
 
     return Scaffold(
         body: SafeArea(
-      child: Container(
-        width: const BoxConstraints().maxWidth,
-        padding: const EdgeInsets.only(left: 16, right: 16, top: 40),
-        child: Column(
-          children: [
-            const CustomText(
-              title: "Sign In",
-              paddingBottom: 8,
-              fontPreset: FontPresets.header,
-            ),
-            const CustomText(
-              title: "Welcome to book store",
-              paddingBottom: 20,
-              fontPreset: FontPresets.subTitle,
-            ),
-            CustomInput(
-              hint: "email",
-              controller: emailController,
-              paddingBottom: 12,
-              errorMsg: emailErr,
-            ),
-            CustomInput(
-              hint: "Password",
-              controller: passwordController,
-              paddingBottom: 20,
-              hasObscure: true,
-              errorMsg: passwordErr,
-            ),
-            Container(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Row(children: [
-                const Spacer(),
-                TextButton(
-                  onPressed: onForgotPasswordPress,
-                  style: TextButton.styleFrom(
-                    alignment: Alignment.centerRight,
+      child: SingleChildScrollView(
+        child: Container(
+          width: const BoxConstraints().maxWidth,
+          height: MediaQuery.of(context).size.height * 0.7,
+          padding: const EdgeInsets.only(left: 16, right: 16, top: 40),
+          child: Column(
+            children: [
+              const CustomText(
+                title: "Sign In",
+                paddingBottom: 8,
+                fontPreset: FontPresets.header,
+              ),
+              const CustomText(
+                title: "Welcome to book store",
+                paddingBottom: 20,
+                fontPreset: FontPresets.subTitle,
+              ),
+              CustomInput(
+                hint: "email",
+                controller: emailController,
+                paddingBottom: 12,
+                errorMsg: emailErr,
+              ),
+              CustomInput(
+                hint: "Password",
+                controller: passwordController,
+                paddingBottom: 20,
+                hasObscure: true,
+                errorMsg: passwordErr,
+              ),
+              Container(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Row(children: [
+                  const Spacer(),
+                  TextButton(
+                    onPressed: onForgotPasswordPress,
+                    style: TextButton.styleFrom(
+                      alignment: Alignment.centerRight,
+                    ),
+                    child: const Text(
+                      "Forgot password",
+                    ),
                   ),
-                  child: const Text(
-                    "Forgot password",
+                ]),
+              ),
+              ButtonTextCustom(
+                title: "Sign In",
+                paddingBottom: 20,
+                onPress: onSignInPress,
+              ),
+              const CustomText(
+                title: "Or sign in with",
+                paddingBottom: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ButtonTextCustom(
+                    title: "Google",
+                    width: 110,
+                    onPress: onGooglePress,
                   ),
-                ),
-              ]),
-            ),
-            ButtonTextCustom(
-              title: "Sign In",
-              paddingBottom: 20,
-              onPress: onSignInPress,
-            ),
-            const CustomText(
-              title: "Or sign in with",
-              paddingBottom: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ButtonTextCustom(
-                  title: "Google",
-                  width: 110,
-                  onPress: onGooglePress,
-                ),
-                ButtonTextCustom(
-                  title: "Facebook",
-                  width: 110,
-                  onPress: onFacebookPress,
-                ),
-                ButtonTextCustom(
-                  title: "Apple",
-                  width: 110,
-                  onPress: onApplePress,
-                ),
-              ],
-            ),
-            const Spacer(),
-            TextButton(
-                onPressed: onSignUpPress,
-                child: const Text("Don't have an account? Sign up here")),
-          ],
+                  ButtonTextCustom(
+                    title: "Facebook",
+                    width: 110,
+                    onPress: onFacebookPress,
+                  ),
+                  ButtonTextCustom(
+                    title: "Apple",
+                    width: 110,
+                    onPress: onApplePress,
+                  ),
+                ],
+              ),
+              const Spacer(),
+              TextButton(
+                  onPressed: onSignUpPress,
+                  child: const Text("Don't have an account? Sign up here")),
+            ],
+          ),
         ),
       ),
     ));
